@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.me.view.GameWindowController">
+   <children>
+      <SplitPane dividerPositions="0.29797979797979796" layoutX="98.0" prefHeight="500.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: aqua;">
+               <children>
+                  <HBox layoutX="12.0" layoutY="324.0">
+                     <children>
+                        <TextField fx:id="input" prefHeight="54.0" prefWidth="221.0">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="okButton" mnemonicParsing="false" onAction="#handleOKButton" prefHeight="53.0" prefWidth="58.0" text="OK" />
+                     </children>
+                  </HBox>
+                  <Button fx:id="menuButton" layoutX="14.0" layoutY="527.0" mnemonicParsing="false" onAction="#handleMenuButon" prefHeight="48.0" prefWidth="134.0" style="-fx-background-color: Yellow;" text="В меню" textFill="#1e12cd">
+                     <font>
+                        <Font name="Kristen ITC" size="20.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="genNumber" layoutX="170.0" layoutY="531.0" prefHeight="40.0" prefWidth="126.0" text="Label">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="victory" alignment="CENTER" contentDisplay="CENTER" layoutX="46.0" layoutY="387.0" prefHeight="48.0" prefWidth="205.0" textFill="#eb614e">
+                     <font>
+                        <Font name="Kristen ITC" size="30.0" />
+                     </font>
+                  </Label>
+                  <TextArea editable="false" layoutX="3.0" layoutY="14.0" prefHeight="197.0" prefWidth="293.0" text="Компьютер сгенерировал для вас &#10;четырёхзначное число без &#10;повторяющихся цифр. &#10;Вам осталось угадать его . &#10;Удачи:)">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextArea>
+                  <Label layoutX="14.0" layoutY="284.0" prefHeight="40.0" prefWidth="156.0" style="-fx-background-color: yellow;" text="Введите число" textFill="#0d7acd">
+                     <font>
+                        <Font name="Kristen ITC" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="637.0">
+               <children>
+                  <TableView fx:id="statisticsTable" layoutX="226.0" layoutY="196.0" prefHeight="598.0" prefWidth="713.0" style="-fx-background-color: aqua;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="stepColumn" prefWidth="97.0" text="Ход" />
+                      <TableColumn fx:id="numberColumn" prefWidth="143.0" text="Число" />
+                        <TableColumn fx:id="bullsColumn" prefWidth="193.0" text="Быки" />
+                        <TableColumn fx:id="cowsColumn" prefWidth="191.0" text="Коровы" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.me.view.MainMenuController">
+   <children>
+      <VBox alignment="CENTER" layoutX="17.0" layoutY="106.0" prefHeight="389.0" prefWidth="313.0" spacing="10.0" style="-fx-border-color: orange; -fx-border-width: 5px;">
+         <children>
+            <Button fx:id="playButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handlePlayButton" prefHeight="76.0" prefWidth="186.0" style="-fx-border-width: 5px; -fx-border-style: solid; -fx-background-color: yellow; -fx-border-color: orange;" text="Играть" textFill="#361ddd">
+               <font>
+                  <Font name="Kristen ITC" size="30.0" />
+               </font>
+            </Button>
+            <Button fx:id="recordsButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleRecordsButton" prefHeight="76.0" prefWidth="186.0" style="-fx-background-color: yellow;" text="Рекорды" textFill="#361ddd">
+               <font>
+                  <Font name="Kristen ITC" size="30.0" />
+               </font>
+            </Button>
+            <Button fx:id="gameInfoButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="76.0" prefWidth="186.0" style="-fx-background-color: yellow;" text="Об игре" textFill="#361ddd">
+               <font>
+                  <Font name="Kristen ITC" size="30.0" />
+               </font>
+            </Button>
+            <Button fx:id="exitButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleExitButton" prefHeight="76.0" prefWidth="186.0" style="-fx-background-color: yellow;" text="Выход" textFill="#361ddd">
+               <font>
+                  <Font name="Kristen ITC" size="30.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      <Label alignment="CENTER" layoutX="732.0" layoutY="122.0" prefHeight="47.0" prefWidth="278.0" style="-fx-background-color: yellow; -fx-border-width: 5px; -fx-border-color: orange;" text="Введите ваше имя" textAlignment="CENTER" textFill="#4f39f5">
+         <font>
+            <Font name="Kristen ITC" size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="playerNameField" layoutX="732.0" layoutY="188.0" prefHeight="46.0" prefWidth="278.0" />
+   </children>
+</AnchorPane>
