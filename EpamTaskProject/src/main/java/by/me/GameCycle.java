@@ -44,6 +44,8 @@ public class GameCycle {
 	public void setToOneStepsCounter() {
 		PlayerStatistics.STEPS_COUNTER = 1;
 	}
+	
+	//check for addition the same person with the same record
 
 	public void analyse() {
 		PlayerStatistics stat = new PlayerStatistics(this.input, this.generatedNumber);

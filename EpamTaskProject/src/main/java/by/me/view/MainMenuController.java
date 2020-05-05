@@ -5,7 +5,8 @@ import java.util.List;
 
 import by.me.GameCycle;
 import by.me.MainApp;
-
+import by.me.ServerThread;
+import by.me.Waiter;
 import by.me.dao.RecordsDAO;
 import by.me.daoImpl.Record;
 import by.me.daoImpl.RecordsDAOImpl;
@@ -45,6 +46,8 @@ public class MainMenuController {
 	private AnchorPane recordsLayout;
 	private GameCycle game;
 	private String playerName;
+	private ServerThread server;
+	private String number;
 	
 	private RecordsDAO dao;
 	
@@ -78,10 +81,10 @@ public class MainMenuController {
 			this.gameLayout = loader.load();
 			GameWindowController controller = loader.getController();
 			controller.setMainApp(this.mainApp);
-			String genNumber = NumberUtil.generateStringNumber();
-			controller.setIt(genNumber);
+			//String genNumber = NumberUtil.generateStringNumber();
+			controller.setIt(this.number);
 			
-			this.game = new GameCycle(genNumber);
+			this.game = new GameCycle(this.number);
 			this.game.setDao(this.dao);
 			this.game.setPlayerName(this.playerName);
 			this.game.setToOneStepsCounter();
@@ -98,8 +101,39 @@ public class MainMenuController {
 		this.mainApp = mainApp;
 	}
 	
+	public void setServer(ServerThread server) {
+		this.server = server;
+	}
+	
 	public String getPlayerName() {
 		return this.playerName;
+	}
+	
+	public void initWaitingWindow() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("Waiting.fxml"));
+			AnchorPane layout = loader.load();
+			
+			WaitingController controller = loader.getController();
+			Scene scene = new Scene(layout);
+			this.mainApp.getPrimaryStage().setScene(scene);
+			this.server.generateNumber();
+			
+			while (!Waiter.isReady) {
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				System.out.println("waiting");
+			}
+			
+			this.number = server.getNumber();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@FXML
@@ -115,6 +149,7 @@ public class MainMenuController {
     		alert.showAndWait();
 		}
 		else {
+			initWaitingWindow();
 			initGameWindow();
 		}
 	}
@@ -126,6 +161,7 @@ public class MainMenuController {
 	
 	@FXML
 	private void handleExitButton() {
+		this.server.getThread().interrupt();
 		this.mainApp.getPrimaryStage().close();
 	}
 	
